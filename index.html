@@ -8,188 +8,53 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --bg: #0a0810;
-      --bg2: #1a1625;
-      --bg3: #2d2640;
-      --border: #3d3060;
-      --purple: #534AB7;
-      --purple-light: #7F77DD;
-      --purple-pale: #EEEDFE;
-      --teal: #5DCAA5;
-      --text: #e0d7ff;
-      --text2: #a78bfa;
-      --text3: #6d28d9;
+      --bg: #0a0810; --bg2: #1a1625; --bg3: #2d2640;
+      --border: #3d3060; --purple: #534AB7; --purple-light: #7F77DD;
+      --purple-pale: #EEEDFE; --teal: #5DCAA5; --text: #e0d7ff;
+      --text2: #a78bfa; --text3: #6d28d9;
     }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .app {
-      width: 100%;
-      max-width: 560px;
-      padding: 2rem 1rem 6rem;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    /* HERO */
-    .hero {
-      text-align: center;
-      padding: 3rem 0 1rem;
-    }
-    .logo-wrap {
-      width: 72px; height: 72px;
-      margin: 0 auto 16px;
-      position: relative;
-    }
-    .logo-ring {
-      width: 72px; height: 72px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--purple-light), var(--teal));
-      padding: 2px;
-      animation: spin 8s linear infinite;
-    }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
+    .app { width: 100%; max-width: 560px; padding: 2rem 1rem 6rem; display: flex; flex-direction: column; gap: 16px; }
+    .hero { text-align: center; padding: 3rem 0 1rem; }
+    .logo-wrap { width: 72px; height: 72px; margin: 0 auto 16px; position: relative; }
+    .logo-ring { width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, var(--purple-light), var(--teal)); padding: 2px; animation: spin 8s linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
-    .logo-inner {
-      width: 100%; height: 100%;
-      border-radius: 50%;
-      background: var(--bg);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 28px; font-weight: 600; color: #fff;
-    }
-    .hero h1 {
-      font-size: 40px; font-weight: 600;
-      background: linear-gradient(135deg, var(--purple-light), var(--teal));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text;
-      letter-spacing: -1px;
-    }
+    .logo-inner { width: 100%; height: 100%; border-radius: 50%; background: var(--bg); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .hero h1 { font-size: 40px; font-weight: 600; background: linear-gradient(135deg, var(--purple-light), var(--teal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: -1px; }
     .hero p { font-size: 14px; color: var(--text2); margin-top: 6px; }
-
-    /* INPUT */
-    .input-wrap {
-      display: flex; gap: 8px; align-items: center;
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 6px 6px 6px 16px;
-      transition: border-color 0.2s;
-    }
+    .input-wrap { display: flex; gap: 8px; align-items: center; background: var(--bg2); border: 1px solid var(--border); border-radius: 24px; padding: 6px 6px 6px 16px; transition: border-color 0.2s; }
     .input-wrap:focus-within { border-color: var(--purple-light); }
-    .input-wrap input {
-      flex: 1; background: transparent; border: none; outline: none;
-      font-size: 14px; font-family: inherit; color: var(--text);
-    }
+    .input-wrap input { flex: 1; background: transparent; border: none; outline: none; font-size: 14px; font-family: inherit; color: var(--text); }
     .input-wrap input::placeholder { color: #6d5e8a; }
-    .mic-btn, .send-btn {
-      width: 38px; height: 38px; border-radius: 50%; border: none;
-      cursor: pointer; display: flex; align-items: center; justify-content: center;
-      font-size: 16px; flex-shrink: 0; transition: all 0.15s;
-    }
+    .mic-btn, .send-btn { width: 38px; height: 38px; border-radius: 50%; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; transition: all 0.15s; }
     .mic-btn { background: var(--bg3); color: var(--text2); }
-    .mic-btn:hover { background: var(--purple); color: white; }
     .mic-btn.recording { background: #4c1515; color: #f87171; animation: pulse 1s infinite; }
     @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.1)} }
-    .send-btn {
-      background: linear-gradient(135deg, var(--purple), var(--purple-light));
-      color: white;
-    }
-    .send-btn:hover { transform: scale(1.05); }
-
-    /* CHIPS */
+    .send-btn { background: linear-gradient(135deg, var(--purple), var(--purple-light)); color: white; }
     .chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
-    .chip {
-      font-size: 12px; padding: 6px 14px; border-radius: 20px;
-      border: 1px solid var(--border); background: var(--bg2);
-      color: #9d8ec0; cursor: pointer; transition: all 0.15s;
-      font-family: inherit; display: flex; align-items: center; gap: 5px;
-    }
-    .chip:hover { border-color: var(--purple-light); color: var(--text); }
+    .chip { font-size: 12px; padding: 6px 14px; border-radius: 20px; border: 1px solid var(--border); background: var(--bg2); color: #9d8ec0; cursor: pointer; transition: all 0.15s; font-family: inherit; display: flex; align-items: center; gap: 5px; }
     .chip.subj.active { background: #2d2050; border-color: var(--purple); color: var(--purple-pale); }
     .chip.mode.active { background: #1a2d25; border-color: var(--teal); color: #a7f3d0; }
-
-    /* LANG PILL */
-    .lang-pill {
-      display: none; align-items: center; gap: 6px;
-      font-size: 11px; color: var(--text2);
-      background: var(--bg2); border: 1px solid var(--border);
-      border-radius: 20px; padding: 4px 12px;
-      margin: 0 auto; width: fit-content;
-    }
-
-    /* DIVIDER */
+    .lang-pill { display: none; align-items: center; gap: 6px; font-size: 11px; color: var(--text2); background: var(--bg2); border: 1px solid var(--border); border-radius: 20px; padding: 4px 12px; margin: 0 auto; width: fit-content; }
     .divider { height: 1px; background: var(--border); display: none; }
-
-    /* CHAT */
     .chat-box { display: flex; flex-direction: column; gap: 12px; }
-    .msg {
-      max-width: 88%; padding: 12px 16px;
-      border-radius: 18px; font-size: 13px; line-height: 1.7;
-    }
-    .msg.bot {
-      background: var(--bg2); border: 1px solid var(--border);
-      color: var(--text); align-self: flex-start;
-      border-bottom-left-radius: 4px;
-    }
-    .msg.user {
-      background: linear-gradient(135deg, var(--purple), var(--purple-light));
-      color: white; align-self: flex-end;
-      border-bottom-right-radius: 4px;
-    }
-    .msg.loading {
-      background: var(--bg2); border: 1px solid var(--border);
-      align-self: flex-start; padding: 14px 18px;
-      border-bottom-left-radius: 4px;
-    }
+    .msg { max-width: 88%; padding: 12px 16px; border-radius: 18px; font-size: 13px; line-height: 1.7; }
+    .msg.bot { background: var(--bg2); border: 1px solid var(--border); color: var(--text); align-self: flex-start; border-bottom-left-radius: 4px; }
+    .msg.user { background: linear-gradient(135deg, var(--purple), var(--purple-light)); color: white; align-self: flex-end; border-bottom-right-radius: 4px; }
+    .msg.loading { background: var(--bg2); border: 1px solid var(--border); align-self: flex-start; padding: 14px 18px; border-bottom-left-radius: 4px; }
     .dot-anim { display: flex; gap: 4px; }
-    .dot-anim span {
-      width: 6px; height: 6px; border-radius: 50%;
-      background: var(--purple-light);
-      animation: dot 1.2s ease-in-out infinite;
-    }
+    .dot-anim span { width: 6px; height: 6px; border-radius: 50%; background: var(--purple-light); animation: dot 1.2s ease-in-out infinite; }
     .dot-anim span:nth-child(2) { animation-delay: 0.2s; }
     .dot-anim span:nth-child(3) { animation-delay: 0.4s; }
     @keyframes dot { 0%,80%,100%{transform:scale(0.5);opacity:0.3} 40%{transform:scale(1);opacity:1} }
-
-    .listen-btn {
-      display: inline-flex; align-items: center; gap: 4px;
-      font-size: 11px; color: var(--text2); background: none;
-      border: none; cursor: pointer; padding: 0; margin-bottom: 6px;
-      font-family: inherit;
-    }
-    .listen-btn:hover { color: var(--purple-light); }
-
-    /* KEY SETUP */
-    .key-setup {
-      background: var(--bg2); border: 1px solid var(--border);
-      border-radius: 16px; padding: 1.5rem; text-align: center;
-      display: flex; flex-direction: column; gap: 12px;
-    }
+    .listen-btn { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; color: var(--text2); background: none; border: none; cursor: pointer; padding: 0; margin-bottom: 6px; font-family: inherit; }
+    .key-setup { background: var(--bg2); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; text-align: center; display: flex; flex-direction: column; gap: 12px; }
     .key-setup h3 { font-size: 15px; font-weight: 500; color: var(--text); }
     .key-setup p { font-size: 12px; color: var(--text2); line-height: 1.6; }
-    .key-input {
-      width: 100%; padding: 10px 14px; border-radius: 10px;
-      border: 1px solid var(--border); background: var(--bg);
-      color: var(--text); font-size: 13px; font-family: inherit; outline: none;
-    }
+    .key-input { width: 100%; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--border); background: var(--bg); color: var(--text); font-size: 13px; font-family: inherit; outline: none; }
     .key-input:focus { border-color: var(--purple-light); }
-    .save-btn {
-      padding: 10px 24px; border-radius: 10px; border: none;
-      background: linear-gradient(135deg, var(--purple), var(--purple-light));
-      color: white; font-size: 13px; font-family: inherit;
-      cursor: pointer; font-weight: 500;
-    }
-    .save-btn:hover { opacity: 0.9; }
+    .save-btn { padding: 10px 24px; border-radius: 10px; border: none; background: linear-gradient(135deg, var(--purple), var(--purple-light)); color: white; font-size: 13px; font-family: inherit; cursor: pointer; font-weight: 500; }
   </style>
 </head>
 <body>
@@ -197,29 +62,43 @@
   <div class="hero">
     <div class="logo-wrap">
       <div class="logo-ring">
-        <div class="logo-inner">Z</div>
+        <div class="logo-inner">
+          <svg viewBox="0 0 60 60" width="52" height="52" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="30" cy="38" rx="16" ry="14" fill="#2d2640"/>
+            <ellipse cx="14" cy="40" rx="6" ry="10" fill="#1e1b30" transform="rotate(-15,14,40)"/>
+            <ellipse cx="46" cy="40" rx="6" ry="10" fill="#1e1b30" transform="rotate(15,46,40)"/>
+            <ellipse cx="30" cy="24" rx="13" ry="12" fill="#2d2640"/>
+            <polygon points="20,14 17,6 24,13" fill="#2d2640"/>
+            <polygon points="40,14 43,6 36,13" fill="#2d2640"/>
+            <circle cx="24" cy="24" r="6" fill="#120f1e" stroke="#5b21b6" stroke-width="1.5"/>
+            <circle cx="36" cy="24" r="6" fill="#120f1e" stroke="#5b21b6" stroke-width="1.5"/>
+            <circle cx="24" cy="24" r="4" fill="#7c3aed"/>
+            <circle cx="36" cy="24" r="4" fill="#7c3aed"/>
+            <circle cx="24" cy="24" r="2" fill="#0f0a1a"/>
+            <circle cx="36" cy="24" r="2" fill="#0f0a1a"/>
+            <circle cx="25.5" cy="22.5" r="1" fill="#e0d7ff" opacity="0.9"/>
+            <circle cx="37.5" cy="22.5" r="1" fill="#e0d7ff" opacity="0.9"/>
+            <polygon points="30,29 27,32 33,32" fill="#a78bfa"/>
+            <ellipse cx="30" cy="42" rx="8" ry="7" fill="#1e1b30" opacity="0.5"/>
+          </svg>
+        </div>
       </div>
     </div>
     <h1>Zeno</h1>
     <p>Learn anything. Any language. Any time.</p>
   </div>
-
-  <!-- API Key Setup -->
   <div class="key-setup" id="key-setup">
     <h3>🔑 Enter your Anthropic API Key</h3>
     <p>Get a free key from <a href="https://console.anthropic.com" target="_blank" style="color:var(--teal)">console.anthropic.com</a><br/>Your key stays in your browser only.</p>
     <input class="key-input" id="api-key-input" type="password" placeholder="sk-ant-api03-..." />
     <button class="save-btn" onclick="saveKey()">Start Learning →</button>
   </div>
-
-  <!-- Main UI (hidden until key is set) -->
   <div id="main-ui" style="display:none;flex-direction:column;gap:16px;">
     <div class="input-wrap">
       <input type="text" id="inp" placeholder="Ask anything..." onkeydown="if(event.key==='Enter')send()" />
-      <button class="mic-btn" id="mic-btn" onclick="toggleMic()" title="Voice input">🎤</button>
-      <button class="send-btn" onclick="send()" title="Send">↑</button>
+      <button class="mic-btn" id="mic-btn" onclick="toggleMic()">🎤</button>
+      <button class="send-btn" onclick="send()">↑</button>
     </div>
-
     <div class="chips">
       <button class="chip subj active" onclick="setSubject(this,'Mathematics')">📐 Math</button>
       <button class="chip subj" onclick="setSubject(this,'Science')">🔬 Science</button>
@@ -228,34 +107,28 @@
       <button class="chip subj" onclick="setSubject(this,'Islamic Studies')">🌙 Islamic</button>
       <button class="chip subj" onclick="setSubject(this,'Coding')">💻 Coding</button>
     </div>
-
     <div class="chips">
       <button class="chip mode active" id="mode-explain" onclick="setMode('explain')">💡 Explain</button>
       <button class="chip mode" id="mode-quiz" onclick="setMode('quiz')">❓ Quiz me</button>
       <button class="chip mode" id="mode-simple" onclick="setMode('simple')">🔤 Simplify</button>
     </div>
-
     <div class="lang-pill" id="lang-pill">🌍 <span id="lang-name"></span></div>
     <div class="divider" id="divider"></div>
     <div class="chat-box" id="chat"></div>
   </div>
 </div>
-
 <script>
 let subject = 'Mathematics', mode = 'explain', currentLang = 'en-US';
 let recognition = null, isRecording = false;
-
 const modePrompts = {
   explain: 'Explain clearly step by step with examples.',
   quiz: 'Generate a short quiz of 3 questions with answers at the end.',
   simple: 'Explain as simply as possible, as if to a curious 10-year-old.'
 };
-
 const langToSpeech = {
   'English':'en-US','French':'fr-FR','Spanish':'es-ES','Arabic':'ar-SA',
   'Moroccan Darija':'ar-MA','Portuguese':'pt-BR','German':'de-DE','Turkish':'tr-TR','Hindi':'hi-IN'
 };
-
 function saveKey() {
   const key = document.getElementById('api-key-input').value.trim();
   if (!key.startsWith('sk-ant')) { alert('Invalid key. Must start with sk-ant...'); return; }
@@ -264,50 +137,25 @@ function saveKey() {
   document.getElementById('main-ui').style.display = 'flex';
   document.getElementById('inp').focus();
 }
-
 function getKey() { return localStorage.getItem('zeno_key'); }
-
 window.onload = () => {
   if (getKey()) {
     document.getElementById('key-setup').style.display = 'none';
     document.getElementById('main-ui').style.display = 'flex';
   }
 };
-
-function setSubject(btn, s) {
-  subject = s;
-  document.querySelectorAll('.chip.subj').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-}
-
-function setMode(m) {
-  mode = m;
-  document.querySelectorAll('.chip.mode').forEach(b => b.classList.remove('active'));
-  document.getElementById('mode-' + m).classList.add('active');
-}
-
+function setSubject(btn, s) { subject = s; document.querySelectorAll('.chip.subj').forEach(b => b.classList.remove('active')); btn.classList.add('active'); }
+function setMode(m) { mode = m; document.querySelectorAll('.chip.mode').forEach(b => b.classList.remove('active')); document.getElementById('mode-' + m).classList.add('active'); }
 function toggleMic() {
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
   if (!SR) { alert('Voice not supported in this browser.'); return; }
   const btn = document.getElementById('mic-btn');
   if (isRecording) { recognition.stop(); return; }
-  recognition = new SR();
-  recognition.lang = currentLang;
-  recognition.start();
-  isRecording = true;
-  btn.classList.add('recording');
-  btn.textContent = '⏹';
-  recognition.onresult = e => {
-    document.getElementById('inp').value = e.results[0][0].transcript;
-    send();
-  };
-  recognition.onend = () => {
-    isRecording = false;
-    btn.classList.remove('recording');
-    btn.textContent = '🎤';
-  };
+  recognition = new SR(); recognition.lang = currentLang; recognition.start();
+  isRecording = true; btn.classList.add('recording'); btn.textContent = '⏹';
+  recognition.onresult = e => { document.getElementById('inp').value = e.results[0][0].transcript; send(); };
+  recognition.onend = () => { isRecording = false; btn.classList.remove('recording'); btn.textContent = '🎤'; };
 }
-
 function speak(text, lang) {
   if (!window.speechSynthesis) return;
   window.speechSynthesis.cancel();
@@ -315,19 +163,11 @@ function speak(text, lang) {
   u.lang = lang || currentLang; u.rate = 0.95;
   window.speechSynthesis.speak(u);
 }
-
 const systemPrompt = () => `You are Zeno, a brilliant and encouraging AI tutor named after the ancient Greek philosopher.
-
-LANGUAGE RULE — most important:
-- Detect the language the user writes in
-- Always reply in the EXACT same language
-- First line of reply: [LANG: <language name in English>]
-
+LANGUAGE RULE: Detect the language the user writes in and always reply in the EXACT same language. First line: [LANG: <language name in English>]
 Personality: warm, encouraging, uses real examples, never condescending.
-Subject: ${subject}
-Mode: ${modePrompts[mode]}
+Subject: ${subject} | Mode: ${modePrompts[mode]}
 Keep answers concise (max 6 steps). Always educational and appropriate for all ages.`;
-
 async function send() {
   const inp = document.getElementById('inp');
   const text = inp.value.trim();
@@ -339,25 +179,14 @@ async function send() {
   const lid = 'l' + Date.now();
   chat.innerHTML += `<div class="msg loading" id="${lid}"><div class="dot-anim"><span></span><span></span><span></span></div></div>`;
   chat.scrollTop = chat.scrollHeight;
-
   try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
+    const res = await fetch('/api/chat', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': getKey(),
-        'anthropic-version': '2023-06-01'
-      },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-6',
-        max_tokens: 1024,
-        system: systemPrompt(),
-        messages: [{ role: 'user', content: text }]
-      })
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ key: getKey(), system: systemPrompt(), message: text })
     });
     const data = await res.json();
     let reply = data.content?.map(b => b.text || '').join('') || 'Something went wrong.';
-
     const langMatch = reply.match(/\[LANG:\s*([^\]]+)\]/);
     if (langMatch) {
       const detected = langMatch[1].trim();
@@ -366,7 +195,6 @@ async function send() {
       document.getElementById('lang-pill').style.display = 'inline-flex';
       reply = reply.replace(/\[LANG:[^\]]+\]\n?/, '').trim();
     }
-
     const mid = 'm' + Date.now();
     document.getElementById(lid).remove();
     chat.innerHTML += `<div class="msg bot" id="${mid}">
